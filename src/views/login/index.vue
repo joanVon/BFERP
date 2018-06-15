@@ -36,7 +36,7 @@ export default {
   methods: {
     login () {
       this.$store.dispatch('LoginByUsername', this.loginForm).then(() => {
-        this.$router.push({ name: 'Guide' })
+        this.$router.push({ name: 'Home' })
       })
     }
   }
