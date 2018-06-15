@@ -35,9 +35,13 @@ export default {
   },
   methods: {
     login () {
+      // commit('SET_SIDEBAR', response.data.sideBarMenu)
       this.$store.dispatch('LoginByUsername', this.loginForm).then(() => {
-        this.$router.push({ name: 'Home' })
+        this.$router.push({ name: 'Intent' })
       })
+      // proxy.loginByUsername(this.loginForm).then(res => {
+      //   commit('SET_SIDEBAR', res.data.sideBarMenu)
+      // })
     }
   }
 }
