@@ -1,12 +1,12 @@
 import loginProxy from '../../views/login/proxy'
-// import { getToken, setToken, removeToken } from '@/utils/auth'
+import { getToken, setToken, removeToken } from '@/api/auth'
 
 const user = {
   state: {
     name: '',
     status: '',
     code: '',
-    token: '',
+    token: getToken(),
     sidebar: []
   },
 
@@ -34,16 +34,32 @@ const user = {
     // 用户名登录
     LoginByUsername ({ commit }, userInfo) {
       return new Promise((resolve, reject) => {
-        loginProxy.loginByUsername(userInfo).then(response => {
+        loginProxy.loginByUsername(userInfo.account, userInfo).then(response => {
           // const data = response.data
           sessionStorage.setItem('loginInfo', JSON.stringify(response.data))
+          // sessionStorage.setItem('token', JSON.stringify(response.data))
           commit('SET_SIDEBAR', response.data.sideBarMenu)
+          commit('SET_TOKEN', response.data.token)
 
-          // setSidebar(response.data.sideBarMenu)
+          setToken(response.data.token)
           resolve()
         }).catch(error => {
           reject(error)
         })
+      })
+    },
+
+    // 退出
+    LogOut ({ commit, state }) {
+      return new Promise((resolve, reject) => {
+        removeToken()
+        /* logout(state.token).then(() => {
+          commit('SET_TOKEN', '')
+          removeToken()
+          resolve()
+        }).catch(error => {
+          reject(error)
+        }) */
       })
     }
   }

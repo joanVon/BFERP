@@ -3,7 +3,7 @@
 import http from '@/api/index'
 export default {
   // 登录
-  loginByUsername (data) {
-    return http.post('/api/login', data)
+  loginByUsername (account, data) {
+    return http.get('/service/v1/user/account/' + account + '/token', {params: data})
   }
 }

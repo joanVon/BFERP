@@ -5,7 +5,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 
 import Element from 'element-ui'
-import i18n from './i18n'
+// import i18n from './i18n'
 
 import 'normalize.css'
 import './assets/style/element-variables.scss'
@@ -26,7 +26,7 @@ Vue.use(Element)
 new Vue({
   el: '#app',
   router,
-  i18n,
+  // i18n,
   store,
   template: '<App/>',
   components: { App }

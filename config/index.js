@@ -11,17 +11,17 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
-      '/api': {
-        target: 'https://www.easy-mock.com/mock/5adf1aee5cbcb66de34da660',
+      // '/api': {
+      //   target: 'https://www.easy-mock.com/mock/5adf1aee5cbcb66de34da660',
+      //   changeOrigin: true,
+      //   // 针对获取不到证书的问题
+      //   secure: false
+      // }
+      '/service': {
+        target: 'http://39.104.168.156:8080',
         changeOrigin: true,
-        // 针对获取不到证书的问题
         secure: false
       }
-      // '/service': {
-      //   target: 'http://39.104.168.156:8080',
-      //   changeOrigin: true,
-      //   secure: false
-      // },
     },
 
     // Various Dev Server settings

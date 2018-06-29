@@ -4,10 +4,10 @@
 
       <el-form ref="loginForm" :model="loginForm" label-width="80px">
         <el-form-item label="">
-          <el-input disabled v-model="loginForm.userName"></el-input>
+          <el-input v-model="loginForm.account" @keyup.enter.native="login()"></el-input>
         </el-form-item>
         <el-form-item label="">
-          <el-input type="password" disabled v-model="loginForm.password"></el-input>
+          <el-input type="password" v-model="loginForm.pwd" @keyup.enter.native="login()"></el-input>
         </el-form-item>
 
         <el-form-item label="">
@@ -28,8 +28,8 @@ export default {
   data () {
     return {
       loginForm: {
-        userName: 'username',
-        password: 'dddddd'
+        account: '',
+        pwd: ''
       }
     }
   },

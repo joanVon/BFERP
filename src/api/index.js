@@ -27,7 +27,7 @@ http.interceptors.response.use(function (response) {
       })
     } else {
       Notification.error({
-        message: '请求返回异常'
+        message: '请求异常'
       })
     }
     return Promise.reject(response.data.ret)

@@ -47,7 +47,7 @@
           <template slot="title">
             <span slot="title">{{menu.name}}</span>
           </template>
-          <el-menu-item :index="'/'+secondMenu.index" v-for="(secondMenu, idx) in menu.childrenItems" :key="idx">
+          <el-menu-item :index="secondMenu.index" v-for="(secondMenu, $idx) in menu.childrenItems" :key="$idx">
             {{secondMenu.name}}
           </el-menu-item>
         </el-submenu>
@@ -69,7 +69,6 @@ export default {
   data () {
     return {
       isCollapse: false
-      // sidebar: this.$store.getters.sidebar
     }
   },
   computed: {
@@ -84,6 +83,7 @@ export default {
     }
   },
   mounted () {
+    debugger
     console.log(this.$store.getters.sidebar)
   },
   methods: {
