@@ -33,6 +33,7 @@ const user = {
   actions: {
     // 用户名登录
     LoginByUsername ({ commit }, userInfo) {
+      removeToken()
       return new Promise((resolve, reject) => {
         loginProxy.loginByUsername(userInfo.account, userInfo).then(response => {
           // const data = response.data

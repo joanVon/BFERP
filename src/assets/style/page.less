@@ -6,7 +6,11 @@
   z-index: 1;
   padding-right: 12px;
   padding-top: 60px;
-  padding-bottom: 60px;
+  // padding-bottom: 60px;
+
+  &.page-left-nav {
+    padding-left: 160px;
+  }
   .border-box();
 
   .page-back {
@@ -39,5 +43,13 @@
       line-height: 59px;
       margin-left: 0;
     }
+  }
+}
+
+.page-toolbar {
+  margin: 10px 0;
+  .clearfix();
+  .opt-btn-group {
+    float: right;
   }
 }

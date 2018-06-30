@@ -42,7 +42,7 @@
         </el-menu-item>
       </el-menu> -->
 
-      <el-menu default-active="/intent" :default-openeds="['0']" router  class="el-menu-vertical-erp" @open="handleOpen" @close="handleClose" :collapse="isCollapse" background-color="#333744" text-color="#f8f8f8">
+      <el-menu :default-active="this.$route.path" router class="el-menu-vertical-erp" @open="handleOpen" @close="handleClose" :collapse="isCollapse" background-color="#333744" text-color="#f8f8f8">
         <el-submenu :index="''+$index+''" v-for="(menu, $index) in sidebar" :key="$index">
           <template slot="title">
             <span slot="title">{{menu.name}}</span>
@@ -83,8 +83,8 @@ export default {
     }
   },
   mounted () {
-    debugger
-    console.log(this.$store.getters.sidebar)
+    // debugger
+    // console.log(this.$store.getters.sidebar)
   },
   methods: {
     handleOpen (key, keyPath) {
