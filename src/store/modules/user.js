@@ -37,7 +37,9 @@ const user = {
       return new Promise((resolve, reject) => {
         loginProxy.loginByUsername(userInfo.account, userInfo).then(response => {
           // const data = response.data
-          sessionStorage.setItem('loginInfo', JSON.stringify(response.data))
+          let loginUserInfo = response.data
+          loginUserInfo.account = userInfo.account
+          sessionStorage.setItem('loginInfo', JSON.stringify(loginUserInfo))
           // sessionStorage.setItem('token', JSON.stringify(response.data))
           commit('SET_SIDEBAR', response.data.sideBarMenu)
           commit('SET_TOKEN', response.data.token)
@@ -50,8 +52,8 @@ const user = {
       })
     },
 
-    // 退出
-    LogOut ({ commit, state }) {
+    // 退出  { commit, state }
+    LoginOut () {
       return new Promise((resolve, reject) => {
         removeToken()
         /* logout(state.token).then(() => {

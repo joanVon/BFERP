@@ -31,10 +31,7 @@ export default {
   created () {
     if (this.isSimpleData) {
       // let children = []
-      debugger
       let ddd = new Tree(this.treeData).init(0)
-
-      console.log(ddd)
       // console.log()
       // this.treeData.forEach(node => {
       //   node.children = children

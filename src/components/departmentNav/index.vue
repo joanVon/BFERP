@@ -1,18 +1,21 @@
 <template>
   <div class="department-menu">
-  <!-- <el-button icon="el-icon-search"></el-button> -->
-  <el-menu >
+  <div class="top-root">
+    <i class="icon-erp icon-root"></i>
+    <span>部门架构</span>
+  </div>
+  <el-menu>
     <template v-for="value in nav">
       <el-submenu :index="''+value.id+''" v-if="value.childrenItems.length">
         <template slot="title">
-          <span slot="title">{{value.name}}</span>
+          <span class="department-nav-title" slot="title" @click="getByDepart(value)">{{value.name}}</span>
         </template>
         <el-menu-item :index="''+secondMenu.id+''" v-for="(secondMenu, $idx) in value.childrenItems" :key="$idx">
-          {{secondMenu.name}}
+          <span class="department-nav-title" @click="getByDepart(secondMenu)">{{secondMenu.name}}</span>
         </el-menu-item>
       </el-submenu>
       <el-menu-item :index="''+value.id+''" v-else>
-        <span slot="title">{{value.name}}</span>
+        <span class="department-nav-title" slot="title" @click="getByDepart(value)">{{value.name}}</span>
       </el-menu-item>
     </template>
   </el-menu>
@@ -37,8 +40,8 @@ export default {
     }
   },
   methods: {
-    getByDepart () {
-      this.$emit('getByDepartment', 'department')
+    getByDepart (department) {
+      this.$emit('getByDepartment', department)
     }
   },
   created () {
@@ -46,7 +49,7 @@ export default {
       // let ddd = new Tree(this.nav).init(null)
       // console.log(ddd)
     }
-    console.log(this.departmentMenu)
+    // console.log(this.departmentMenu)
   }
 }
 </script>

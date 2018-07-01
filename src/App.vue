@@ -31,6 +31,7 @@ export default {
   },
   beforeMount () {
     let module = this.$route.path.split('/')[1]
+    // console.log(module)
     switch (module) {
       case undefined: this.noHeader = false
         break

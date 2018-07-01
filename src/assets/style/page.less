@@ -5,11 +5,11 @@
   overflow: auto;
   z-index: 1;
   padding-right: 12px;
-  padding-top: 60px;
+  padding-top: 48px;
   // padding-bottom: 60px;
 
   &.page-left-nav {
-    padding-left: 160px;
+    padding-left: 170px;
   }
   .border-box();
 
@@ -46,10 +46,51 @@
   }
 }
 
+.page-form-content {
+  background-color: #fff;
+  margin-left: 12px;
+  padding: 20px 0;
+}
+
 .page-toolbar {
   margin: 10px 0;
+  line-height: 28px;
   .clearfix();
+  .page-title {
+    float: left;
+    padding-left: 12px;
+  }
   .opt-btn-group {
     float: right;
+  }
+}
+
+.page-opt-bottom {
+  text-align: center;
+  margin-top: 12px;
+}
+
+.form-opt-btn {
+  width: 110px;
+}
+
+.icon-erp {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+  vertical-align: middle;
+
+  &.icon-collapse-btn {
+    background: url(../../../static/imgIcon/icon_shrink_dark.png) no-repeat;
+  }
+  &.icon-nav-0 {
+    background: url(../../../static/imgIcon/icon_engineering.png) no-repeat;
+  }
+  &.icon-nav-1 {
+    background: url(../../../static/imgIcon/icon_setup.png) no-repeat;
+  }
+  &.icon-root {
+    background: url(../../../static/imgIcon/icon_part.png) no-repeat;
   }
 }

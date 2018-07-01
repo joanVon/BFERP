@@ -1,17 +1,23 @@
 <template>
   <div class="login-page">
+    <div class="top-right"></div>
+    <div class="bottom-left"></div>
     <div class="login-content">
-
-      <el-form ref="loginForm" :model="loginForm" label-width="80px">
+      
+      <el-form class="login-form" ref="loginForm" :model="loginForm">
+        <div class="login-logo">
+          <img src="../../../static/imgIcon/logo.png" alt="">
+          <div>百福ERP登录</div>
+        </div>
         <el-form-item label="">
-          <el-input v-model="loginForm.account" @keyup.enter.native="login()"></el-input>
+          <el-input v-model="loginForm.account" placeholder="请输入用户名" @keyup.enter.native="login()"></el-input>
         </el-form-item>
         <el-form-item label="">
-          <el-input type="password" v-model="loginForm.pwd" @keyup.enter.native="login()"></el-input>
+          <el-input type="password" v-model="loginForm.pwd" placeholder="请输入密码" @keyup.enter.native="login()"></el-input>
         </el-form-item>
 
-        <el-form-item label="">
-          <el-button @click="login" style="width: 100%;">登录</el-button>
+        <el-form-item label="" style="margin-top: 42px;">
+          <el-button type="primary" @click="login" style="width: 100%;">登录</el-button>
         </el-form-item>
       </el-form>
 
@@ -21,7 +27,7 @@
 </template>
 
 <script>
-// import proxy from './proxy'
+import './style.less'
 export default {
   name: 'login',
   // components: { Layout },
@@ -48,13 +54,5 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.login-page {
-  height: 100%;
-  .login-content {
-    width: 460px;
-    height: inherit;
-    margin: 0 auto;
-    transform: translate(0, 30%);
-  }
-}
+
 </style>

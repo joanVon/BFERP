@@ -5,13 +5,14 @@ import Login from '@/views/login/router'
 import Intent from '@/views/intent/router'
 import Account from '@/views/account/router'
 import Department from '@/views/department/router'
+import UserInfo from '@/views/userInfo/router'
 
 Vue.use(Router)
 
 export default new Router({
   mode: '',
-  base: '/dist',
+  base: '/erp',
   routes: [
-    ...Intent, ...Login, ...Account, ...Department
+    ...Intent, ...Login, ...Account, ...Department, ...UserInfo
   ]
 })

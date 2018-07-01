@@ -1,7 +1,7 @@
 /* 改变主题色变量 */
 $--color-primary: #284dbb;
 
-$--border-radius-base: 2px !default;
+$--border-radius-base: 4px !default;
 
 $--font-size-base: 12px !default;
 
@@ -34,6 +34,12 @@ thead {
       background: $--table-header-background !important;
     }
   }
+}
+
+.el-menu-item:hover, .el-menu-item:focus {
+  outline: none;
+  background: none !important;
+  font-weight: 700;
 }
 
 /* 改变 icon 字体路径变量，必需 */

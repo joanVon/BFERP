@@ -1,3 +1,4 @@
+// import Vue from 'vue'
 import axios from 'axios'
 import {Notification} from 'element-ui'
 
@@ -22,6 +23,9 @@ http.interceptors.response.use(function (response) {
   // 错误统一处理
   if (response.data.ret * 1 !== 0) {
     if (response.data.msg) {
+      if (response.data.ret * 1 === 100003) {  // token 错误跳出平台
+        location.href = window.location.origin
+      }
       Notification.error({
         message: response.data.msg
       })
