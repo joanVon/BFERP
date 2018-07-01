@@ -140,6 +140,7 @@ export default {
       } else {
         this.saveEdit()
       }
+      this.getDepartmentList()
     },
     getDepartmentList () {
       proxy.getDepartmentAll(this.accessToken).then(res => {

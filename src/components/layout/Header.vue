@@ -58,7 +58,7 @@ export default {
 
 <style lang="less" scoped>
 .layout-header-logo {
-  font-size: 18px;
+  font-size: 16px !important;
   img {
     vertical-align: middle;
   }
