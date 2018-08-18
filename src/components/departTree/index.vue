@@ -4,7 +4,7 @@
       <span class="custom-tree-node" :title="node.label" slot-scope="{ node, data }">
         <!-- <span :data="data.id"> -->
           {{ node.label }}
-          <span v-if="data.id !== 0 && data.id !== 1">
+          <span v-if="data.pid !== 0 && data.id !== 1">
             (<span style="color: #ff0000;">{{ data.activeCount }}</span>/{{ data.allCount }})
           </span>
         <!-- </span> -->

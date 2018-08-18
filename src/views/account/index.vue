@@ -130,12 +130,12 @@ export default {
       if (this.action === 'add') {
         this.saveAdd()
       }
-      this.getDepartmentList()
     },
 
     saveAdd () {
       proxy.addSaveDepartment(this.departmentForm).then(res => {
         this.dialogFormVisible = false
+        this.getDepartmentList()
         // this.getInfoByDepart(this.currentDepartment)
       })
     },
@@ -162,12 +162,13 @@ export default {
     },
     getDepartmentList () {
       if (this.departData.length) {
-        this.departDat.forEach(prop => {
-          this.departData.splice(prop, 0)
-        })
+        this.departData.splice(0, this.departData.length)
       }
       proxy.getDepartmentAll().then(res => {
-        this.departData = new Tree(res.data, null)
+        const newArray = new Tree(res.data, null)
+        newArray.forEach(prop => {
+          this.departData.push(prop)
+        })
       })
     },
     getAccountTable () {
@@ -187,7 +188,7 @@ export default {
       this.getTableByDepart(depart.id)
     }
   },
-  beforeMount () {
+  mounted () {
     this.getDepartmentList()
     this.getAccountTable()
   }

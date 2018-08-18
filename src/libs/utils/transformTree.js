@@ -1,9 +1,3 @@
-// const Tree = (data) => {
-//   data = data || [] // 数据
-//   this.groups = {} // 分组
-//   // this.data = []
-// }
-
 const Tree = function (data, pid) {
   return this.init(data, pid)
 }
@@ -11,26 +5,39 @@ const Tree = function (data, pid) {
 Tree.prototype = {
   groups: {},  // 分组
   init (data, pid) {
-    // this.data = data
+    this.groups = {}
     for (let i = 0; i < data.length; i++) {
-      if (this.groups[data[i].pid]) {
+      if (this.groups[data[i].pid] !== undefined) {
         this.groups[data[i].pid].push(data[i])
       } else {
         this.groups[data[i].pid] = []
         this.groups[data[i].pid].push(data[i])
       }
     }
-    let transData = this.getData(this.groups[pid])
+    let info = this.groups[pid]
+    let transData = this.getData(info)
     // console.log(transData)
     return transData
+  },
+  group (tree) {
+    for (var i = 0; i < tree.length; i++) {
+      if (this.groups[tree[i].pId]) {
+        this.groups[tree[i].pId].push(tree[i])
+      } else {
+        this.groups[tree[i].pId] = []
+        this.groups[tree[i].pId].push(tree[i])
+      }
+    }
   },
 
   getData (info) {
     if (!info) return
 
     let children = []
+
     for (let i = 0; i < info.length; i++) {
       let item = info[i]
+
       item.children = this.getData(this.groups[item.id]) || []
       children.push(item)
     }

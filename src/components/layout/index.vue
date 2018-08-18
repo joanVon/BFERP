@@ -49,7 +49,7 @@ export default {
         sideBar = loginInfo.sideBarMenu
       }
 
-      console.log(sideBar)
+      // console.log(sideBar)
 
       return sideBar
     },
