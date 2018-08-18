@@ -205,7 +205,7 @@ export default {
           // this.accountForm = _.omit(this.accountForm, 'checkPass')
           if (this.accountId !== '') {
             let accountPost = _.omit(this.accountForm, 'id', 'checkPass', 'accountLevel', 'createdAt', 'updatedAt')
-            proxy.modifySaveAccount(this.accessToken, accountPost, this.accountId).then(res => {
+            proxy.modifySaveAccount(accountPost, this.accountId).then(res => {
               this.$message({
                 message: '修改账号成功！',
                 type: 'success'
@@ -214,7 +214,7 @@ export default {
             })
           } else {
             let accountPost = _.omit(this.accountForm, 'checkPass')
-            proxy.addSaveAccount(this.accessToken, accountPost).then(res => {
+            proxy.addSaveAccount(accountPost).then(res => {
               this.$message({
                 message: '添加账号成功！',
                 type: 'success'
@@ -234,7 +234,7 @@ export default {
     // 最上级部门
     getDepartment () {
       //
-      proxy.getDepartmentTop(this.accessToken, 0).then(res => {
+      proxy.getDepartmentTop(0).then(res => {
         // console.log(res.data)
         this.topDepartments = res.data
       })
@@ -247,7 +247,7 @@ export default {
       this.accountForm.belongsTopLevelDepartment = top.name
 
       // let top = this.accountForm.belongsTopLevelDepartment
-      proxy.getDepartmentByLevel(this.accessToken, top.id).then(res => {
+      proxy.getDepartmentByLevel(top.id).then(res => {
         this.secDepartments = res.data
       })
     },
@@ -256,13 +256,13 @@ export default {
       this.accountForm.belongsDepartment = second.name
       // let top = this.accountForm.belongsTopLevelDepartment
       // let pos = this.accountForm.belongsDepartment
-      proxy.getPositionById(this.accessToken, this.curTopId).then(res => {
+      proxy.getPositionById(this.curTopId).then(res => {
         this.positions = res.data
       })
     },
     // 查询单个account详情
     getAccountDetail (accountId) {
-      proxy.getAccountById(this.accessToken, accountId).then(res => {
+      proxy.getAccountById(accountId).then(res => {
         this.accountForm = res.data
         this.accountForm.checkPass = res.data.password
       })

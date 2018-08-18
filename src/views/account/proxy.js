@@ -2,43 +2,51 @@ import http from '@/api/index'
 import qs from 'qs'
 export default {
   // 获取部门结构
-  getDepartmentAll (token) {
-    return http.get('/service/v1/department/listAll', {headers: {'token': token}})
+  getDepartmentAll () {
+    return http.get('/service/v1/department/listAll')
   },
+
   // GET /v1/user/list
-  getAllAccount (token) {
-    return http.get('/service/v1/user/list', {headers: {'token': token}})
+  getAllAccount () {
+    return http.get('/service/v1/user/list')
   },
   // GET /v1/user/departmentId/{departmentId}/list
-  getAccountByDepart (token, departmentId) {
-    return http.get('/service/v1/user/departmentId/' + departmentId + '/list', {headers: {'token': token}})
+  getAccountByDepart (departmentId) {
+    return http.get('/service/v1/user/departmentId/' + departmentId + '/list')
   },
-  addSaveAccount (token, data) {
-    return http.post('/service/v1/user', qs.stringify(data), {headers: {'token': token}})
+  addSaveAccount (data) {
+    return http.post('/service/v1/user', qs.stringify(data))
+  },
+  addSaveDepartment (data) {
+    return http.post('/service/v1/department', qs.stringify(data))
   },
   // PUT /v1/user/id/{id}
-  modifySaveAccount (token, data, id) {
-    return http.put('/service/v1/user/id/' + id, qs.stringify(data), {headers: {'token': token}})
+  modifySaveAccount (data, id) {
+    return http.put('/service/v1/user/id/' + id, qs.stringify(data))
   },
 
   // GET /v1/department/level/{level}
-  getDepartmentTop (token, level) {
-    return http.get('/service/v1/department/level/' + level, {headers: {'token': token}})
+  getDepartmentTop (level) {
+    return http.get('/service/v1/department/level/' + level)
   },
   // GET /v1/department/id/{id}/children
-  getDepartmentByLevel (token, id) {
-    return http.get('/service/v1/department/id/' + id + '/children', {headers: {'token': token}})
+  getDepartmentByLevel (id) {
+    return http.get('/service/v1/department/id/' + id + '/children')
   },
   // GET /v1/department/position/departmentId/{departmentId}
-  getPositionById (token, id) {
-    return http.get('/service/v1/department/position/departmentId/' + id, {headers: {'token': token}})
+  getPositionById (id) {
+    return http.get('/service/v1/department/position/departmentId/' + id)
   },
   // GET /v1/user/id/{id}
-  getAccountById (token, id) {
-    return http.get('/service/v1/user/id/' + id, {headers: {'token': token}})
+  getAccountById (id) {
+    return http.get('/service/v1/user/id/' + id)
   },
   // DELETE /v1/user/id/{id}
-  deleteAccount (token, id) {
-    return http.delete('/service/v1/user/id/' + id, {headers: {'token': token}})
+  deleteAccount (id) {
+    return http.delete('/service/v1/user/id/' + id)
+  },
+  // DELETE /v1/department/id/{id}
+  deleteDepartment (id) {
+    return http.delete('/service/v1/department/id/' + id)
   }
 }

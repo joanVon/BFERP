@@ -6,11 +6,11 @@ const Tree = (data) => {
 Tree.prototype = {
   init: function (pid) {
     this.group()
-    let data = this.getData(this.groups[pid])
+    var data = this.getData(this.groups[pid])
     return data
   },
   group: function () {
-    for (let i = 0; i < this.tree.length; i++) {
+    for (var i = 0; i < this.tree.length; i++) {
       if (this.groups[this.tree[i].pId]) {
         this.groups[this.tree[i].pId].push(this.tree[i])
       } else {
@@ -22,11 +22,10 @@ Tree.prototype = {
   getData: function (info) {
     if (!info) return
 
-    let children = []
-    for (let i = 0; i < info.length; i++) {
-      let item = info[i]
-      // item.children = item['children'].concat(this.getData(this.groups[item.id]))
-      item.children = [...item['children'], ...this.getData(this.groups[item.id])]
+    var children = []
+    for (var i = 0; i < info.length; i++) {
+      var item = info[i]
+      item.children = item['children'].concat(this.getData(this.groups[item.id]))
       children.push(item)
     }
 

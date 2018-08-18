@@ -17,7 +17,7 @@
             <span slot="title">{{menu.name}}</span>
           </template>
           <el-menu-item :index="secondMenu.index" v-for="(secondMenu, $idx) in menu.childrenItems" :key="$idx">
-            {{secondMenu.name}}
+            <span v-if="secondMenu.index !== '/department'">{{secondMenu.name}}</span>
           </el-menu-item>
         </el-submenu>
       </el-menu>
@@ -48,6 +48,9 @@ export default {
       if (loginInfo) {
         sideBar = loginInfo.sideBarMenu
       }
+
+      console.log(sideBar)
+
       return sideBar
     },
     activePath () {

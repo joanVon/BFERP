@@ -10,7 +10,7 @@
           <div>百福ERP登录</div>
         </div>
         <el-form-item label="">
-          <el-input v-model="loginForm.account" placeholder="请输入用户名" @keyup.enter.native="login()"></el-input>
+          <el-input v-model="loginForm.account" placeholder="请输入用户名"></el-input>
         </el-form-item>
         <el-form-item label="">
           <el-input type="password" v-model="loginForm.pwd" placeholder="请输入密码" @keyup.enter.native="login()"></el-input>
@@ -43,7 +43,7 @@ export default {
     login () {
       // commit('SET_SIDEBAR', response.data.sideBarMenu)
       this.$store.dispatch('LoginByUsername', this.loginForm).then(() => {
-        this.$router.push({ name: 'Account' })
+        this.$router.push({ name: 'Intent' })
       })
       // proxy.loginByUsername(this.loginForm).then(res => {
       //   commit('SET_SIDEBAR', res.data.sideBarMenu)

@@ -1,7 +1,7 @@
 <template>
   <div class="page-content page-left-nav account">
-    <department-nav :nav="departData" :isSimpleData="true" @getByDepartment="getInfoByDepart">
-    </department-nav>
+    <department-tree :treeData="departData" @getByDepartment="getInfoByDepart">
+    </department-tree>
     <div class="table-container">
       <div class="page-toolbar">
         <div class="page-title">部门列表</div>
@@ -48,11 +48,12 @@
   </div>
 </template>
 <script>
-import DepartmentNav from '@/components/departmentNav/index'
+import Tree from '@/libs/utils/transformTree'
+import DepartmentTree from '@/components/departTree/index'
 import proxy from './proxy.js'
 
 export default {
-  components: { DepartmentNav },
+  components: { DepartmentTree },
   data () {
     return {
       departData: [],
@@ -86,7 +87,7 @@ export default {
       this.actionId = row.id
       this.departmentForm.parentDepartmentName = row.belongDepart
       this.departmentForm.departmentName = row.name
-      // proxy.getDepartmentDet(this.accessToken, row.id).then(res => {
+      // proxy.getDepartmentDet(, row.id).then(res => {
       //   // this.departmentForm = res.data
       //   this.departmentForm.parentDepartmentName = row.belongDepart
       //   this.departmentForm.departmentName = row.name
@@ -98,14 +99,14 @@ export default {
         cancelButtonText: '取消',
         type: 'warning'
       }).then(() => {
-        proxy.deleteDepartment(this.accessToken, row.id).then(res => {
+        proxy.deleteDepartment(row.id).then(res => {
           this.getInfoByDepart(this.currentDepartment)
           this.getDepartmentList()
         })
       }).catch(() => { })
     },
     openDepartDialog () {
-      proxy.getDepartmentTop(this.accessToken, 0).then(res => {
+      proxy.getDepartmentTop(0).then(res => {
         this.departmentTop = res.data
       })
       // console.log('opennnnnnn')
@@ -118,7 +119,7 @@ export default {
     },
 
     saveAdd () {
-      proxy.addSaveDepartment(this.accessToken, this.departmentForm).then(res => {
+      proxy.addSaveDepartment(this.departmentForm).then(res => {
         this.dialogFormVisible = false
         // if (this.currentDepartment === 'undefined') {
         //   this.getInfoByDepart(this.currentDepartment)
@@ -127,7 +128,7 @@ export default {
       })
     },
     saveEdit () {
-      proxy.modifySaveDepart(this.accessToken, this.departmentForm, this.actionId).then(res => {
+      proxy.modifySaveDepart(this.departmentForm, this.actionId).then(res => {
         this.getInfoByDepart(this.currentDepartment)
         this.dialogFormVisible = false
       })
@@ -140,12 +141,17 @@ export default {
       } else {
         this.saveEdit()
       }
-      this.getDepartmentList()
+      // this.getDepartmentList()
+      proxy.getDepartmentAll().then(res => {
+        // console.log(res)
+        // this.departData = res.data
+        this.departData = new Tree(res.data, null)
+      })
     },
     getDepartmentList () {
-      proxy.getDepartmentAll(this.accessToken).then(res => {
+      proxy.getDepartmentAll().then(res => {
         // console.log(res)
-        this.departData = res.data
+        this.departData = new Tree(res.data, null)
         if (!this.currentDepartment.id) {
           this.currentDepartment = this.departData[0]
           this.getDepartmentTable(this.departData[0].id, this.departData[0])
@@ -153,7 +159,7 @@ export default {
       })
     },
     getDepartmentTable (id, department) {
-      proxy.getDepartmentByLevel(this.accessToken, id).then(res => {
+      proxy.getDepartmentByLevel(id).then(res => {
         this.departmentTable = res.data
         this.departmentTable.forEach(depart => {
           depart.belongDepart = department.name
