@@ -6,13 +6,13 @@ $--border-radius-base: 4px !default;
 $--font-size-base: 12px !default;
 
 $--button-medium-padding-vertical: 9px !default;
-$--button-medium-padding-horizontal: 32px !default;
+$--button-medium-padding-horizontal: 30px !default;
 
 $--checkbox-font-size: $--font-size-base !default;
 $--radio-font-size: $--font-size-base !default;
 $--select-input-font-size: $--font-size-base !default;
 
-$--input-height: 32px !default;
+$--input-height: 30px !default;
 $--input-mini-height: 24px !default;
 
 $--table-header-color: #fff !default;
@@ -33,6 +33,24 @@ thead {
     th {
       background: $--table-header-background !important;
     }
+  }
+}
+.el-table th > .cell.highlight {
+  color: #fff !important;
+}
+
+.el-button {
+  border-radius: 3px;
+  padding: 10px 20px;
+  &.el-button--medium {
+    border-radius: 3px;
+    padding: 7px 30px;
+  }
+  &.el-button--small {
+    padding: 7px 15px;
+  }
+  &.el-button--mini {
+    padding: 5px 10px;
   }
 }
 

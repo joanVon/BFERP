@@ -1,0 +1,140 @@
+.project-flow {
+  .flow-card-group {
+    height: 128px;
+    // margin-left: 5px !important;
+  }
+  .flow-card {
+    height: 128px;
+    text-align: center;
+    background-color: #fff;
+
+    &.bg-setting .card-count {
+      position: absolute;
+      font-size: 72px;
+      color: #eee;
+      right: 6px;
+      bottom: -3px;
+    }
+  }
+  .card-title {
+    font-size: 16px;
+    color: #999;
+    padding-top: 34px;
+  }
+
+  .card-count {
+    line-height: 66px;
+    &.input {
+      color: #f77925;
+    }
+    &.check {
+      color: #3052b2;
+    }
+    &.refuse {
+      color: #d0021b;
+    }
+    &.apply {
+      color: #129f75;
+    }
+   
+    .font-36 {
+      font-size: 36px;
+    }
+    .font-24 {
+      font-size: 24px;
+    }
+  }
+
+  .flow-content {
+    margin-top: 24px;
+    // margin-left: 2px !important;
+    .flow-title {
+      background-color: #eee;
+      color: #333;
+      height: 65px;
+      line-height: 65px;
+      padding-left: 12px;
+    }
+    .flow-block {
+      background-color: #fff;
+      height: 105px;
+      border-bottom: 1px solid #eee;
+      // transform: translate(0, 20%);
+      line-height: 105px;
+      cursor: pointer;
+ 
+      &:after {
+        position: absolute;
+        content: '';
+        width: 1px;
+        height:100%;
+        top: 0;
+        left: 84px;
+        background: #eee;
+      }
+    }
+    .flow-item div {
+      display: inline-block;
+    }
+    .flow-context {
+      padding-left: 20px;
+    }
+    .flow-index {
+      position: relative;
+      width: 64px;
+      text-align: center;
+      border-left: 8px solid;
+      &.color-1 {
+        border-color: #21a77f;
+        &:after {
+          border-color: #21a77f;
+        }
+      }
+      &.color-2 {
+        border-color: #3052b2;
+        &:after {
+          border-color: #3052b2;
+        }
+      }
+      &.color-3 {
+        border-color: #f77925;
+        &:after {
+          border-color: #f77925;
+        }
+      }
+      &.color-4 {
+        border-color: #dd2119;
+        &:after {
+          border-color: #dd2119;
+        }
+      }
+      &.color-5 {
+        border-color: #b5b5b5;
+        &:after {
+          border-color: #b5b5b5;
+        }
+      }
+      &:after {
+        content: '';
+        position: absolute;
+        display: block;
+        width: 10px;
+        height: 10px;
+        top: 45px;
+        right: -9px;
+        border: 3px solid;
+        border-radius: 10px;
+        z-index: 1;
+        background: #fff;
+      }
+    }
+  }
+}
+
+.update-intent {
+  .base-info-bg {
+    background: #fff;
+    padding: 20px 0;
+    // margin-left: 12px !important;
+  }
+}

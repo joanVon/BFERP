@@ -3,6 +3,8 @@ import Router from 'vue-router'
 // import Guide from '@/views/guide/router'
 import Login from '@/views/login/router'
 import Intent from '@/views/intent/router'
+import Order from '@/views/order/router'
+import LostSheet from '@/views/lostSheet/router'
 import Account from '@/views/account/router'
 import Department from '@/views/department/router'
 import UserInfo from '@/views/userInfo/router'
@@ -13,6 +15,6 @@ export default new Router({
   mode: '',
   base: '/erp',
   routes: [
-    ...Intent, ...Login, ...Account, ...Department, ...UserInfo
+    ...Intent, ...Order, ...LostSheet, ...Login, ...Account, ...Department, ...UserInfo
   ]
 })

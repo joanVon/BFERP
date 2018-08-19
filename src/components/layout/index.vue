@@ -140,7 +140,7 @@ export default {
     top: 0;
     width: 100%;
     height: 100%;
-    margin-left: -10px;
+    padding-right: 10px;
     padding-left: inherit;
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
